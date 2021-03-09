@@ -80,13 +80,13 @@ def start_game():
         #Check if the combination exists in win conditions
         try:
             #Run if yes and the user has won
-            print(CONDITIONS.index([user_choice, computer_choice]))
+            CONDITIONS.index([user_choice, computer_choice])
             statement_generator("You Win!! You picked {} and computer picked {}".format(get_full_input(user_choice), get_full_input(computer_choice)), "=")
             add_score(user_score, "Win")
         except:
             try:
                 #Run if yes and the computer has won
-                print(CONDITIONS.index([computer_choice, user_choice]))
+                CONDITIONS.index([user_choice, computer_choice])
                 statement_generator("You Lost!! You picked {} and computer picked {}".format(get_full_input(user_choice), get_full_input(computer_choice)), "=")
                 add_score(user_score, "Lose")
             except:
