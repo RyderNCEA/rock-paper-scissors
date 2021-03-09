@@ -48,7 +48,25 @@ def start_game():
         print("Paper > Rock")
         print("Scissors > Paper\n")
         print("To quit type 'xxx' instead of entering your choice\n")
+    
+    #Determine how many rounds to play
     while True:
+        playing_rounds = input("How many rounds do you want to play? [infinite] or [a number]: ")
+        if playing_rounds == "infinite":
+            playing_rounds = 9999999999
+            break
+        try:
+            playing_rounds = int(playing_rounds)
+            if playing_rounds < 1:
+                print("Invalid Input, use a number higher than 1!")
+                continue
+            else:
+                break
+        except:
+            continue
+
+    while playing_rounds > 0:
+        playing_rounds += -1
         #Get the users choice either Rock, Paper or Scissors
         user_choice = input("What do you choose? [R]ock [P]aper [S]cissors or 'xxx' to quit: ")
         #Make sure users input is valid
@@ -62,13 +80,13 @@ def start_game():
                 break
             if value == "Scissors":
                 break
-            user_choice = input("What do you choose? [R]ock [P]aper [S]cissors: ")
+            user_choice = input("What do you choose? [R]ock [P]aper [S]cissors or 'xxx' to quit: ")
             continue
 
         #Generate random choice for computer
         computer_choice = random.choice(CONDITIONS)
         computer_choice = computer_choice[0]
-        print(computer_choice)
+
         #Determine if the user tied, won or lost
         #What runs if user ties
         if computer_choice == user_choice:
@@ -86,7 +104,7 @@ def start_game():
         except:
             try:
                 #Run if yes and the computer has won
-                CONDITIONS.index([user_choice, computer_choice])
+                CONDITIONS.index([computer_choice, user_choice])
                 statement_generator("You Lost!! You picked {} and computer picked {}".format(get_full_input(user_choice), get_full_input(computer_choice)), "=")
                 add_score(user_score, "Lose")
             except:
