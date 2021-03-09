@@ -58,7 +58,7 @@ def start_game():
         try:
             playing_rounds = int(playing_rounds)
             if playing_rounds < 1:
-                print("Invalid Input, use a number higher than 1!")
+                print("Invalid Input, use a number higher than 0!")
                 continue
             else:
                 break
